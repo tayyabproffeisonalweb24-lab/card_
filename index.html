@@ -1,0 +1,533 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Modern Cards</title>
+
+<style>
+/* ===== Global Setup ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #080d18;
+  --panel: #111827;
+  --border: #263449;
+  --green: #34d399;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1150px;
+  margin: auto;
+}
+
+/* ===== Page Header ===== */
+.header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.header .eyebrow {
+  display: inline-block;
+  padding: 7px 13px;
+  border: 1px solid rgba(52, 211, 153, .25);
+  border-radius: 50px;
+  background: rgba(52, 211, 153, .08);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.header h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  letter-spacing: -1.5px;
+  margin-bottom: 13px;
+}
+
+.header h1 span {
+  color: var(--green);
+}
+
+.header p {
+  max-width: 550px;
+  margin: auto;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ===== Card Grid ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+/* ===== Base Card ===== */
+.card {
+  position: relative;
+  overflow: hidden;
+  padding: 25px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #151f30, #0e1523);
+  border: 1px solid var(--border);
+  transition: transform .3s ease, border-color .3s ease,
+              box-shadow .3s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20%;
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--green), transparent);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: rgba(52, 211, 153, .5);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .25);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* ===== Card Icon ===== */
+.card-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: rgba(52, 211, 153, .12);
+  border: 1px solid rgba(52, 211, 153, .2);
+  font-size: 25px;
+  margin-bottom: 23px;
+}
+
+.icon-blue {
+  background: rgba(56, 189, 248, .12);
+  border-color: rgba(56, 189, 248, .25);
+}
+
+.icon-purple {
+  background: rgba(192, 132, 252, .12);
+  border-color: rgba(192, 132, 252, .25);
+}
+
+.icon-gold {
+  background: rgba(251, 191, 36, .12);
+  border-color: rgba(251, 191, 36, .25);
+}
+
+/* ===== Card Content ===== */
+.card h2 {
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ===== Statistics Card ===== */
+.stat-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.stat-label span:first-child {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stat-value {
+  font-size: 35px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+
+.stat-value small {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 9px;
+  border-radius: 8px;
+  background: rgba(52, 211, 153, .09);
+}
+
+/* ===== Progress Bar ===== */
+.progress-track {
+  height: 6px;
+  width: 100%;
+  background: #263449;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 18px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: var(--progress);
+  border-radius: inherit;
+  background: linear-gradient(90deg, #10b981, #6ee7b7);
+  animation: grow 1s ease both;
+}
+
+@keyframes grow {
+  from { width: 0; }
+  to { width: var(--progress); }
+}
+
+/* ===== Profile Card ===== */
+.profile-card {
+  text-align: center;
+}
+
+.avatar {
+  width: 78px;
+  height: 78px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  font-size: 29px;
+  font-weight: bold;
+  color: #052e24;
+  background: linear-gradient(135deg, #6ee7b7, #10b981);
+  box-shadow: 0 0 25px rgba(16, 185, 129, .15);
+}
+
+.profile-card h2 {
+  margin-bottom: 6px;
+}
+
+.role {
+  color: var(--green);
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.profile-card p {
+  margin-bottom: 20px;
+}
+
+.profile-btn {
+  width: 100%;
+  padding: 11px 15px;
+  border: 1px solid rgba(52, 211, 153, .35);
+  border-radius: 10px;
+  background: rgba(52, 211, 153, .08);
+  color: var(--green);
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.profile-btn:hover {
+  background: var(--green);
+  color: #052e24;
+}
+
+/* ===== Feature Card ===== */
+.feature-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.feature-list li {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  color: #cbd5e1;
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.feature-list li span {
+  color: var(--green);
+}
+
+/* ===== Call To Action Card ===== */
+.cta-card {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background:
+    radial-gradient(circle at right top, rgba(16,185,129,.15), transparent 45%),
+    linear-gradient(145deg, #151f30, #0e1523);
+}
+
+.cta-card h2 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.cta-card p {
+  max-width: 390px;
+  margin-bottom: 20px;
+}
+
+.cta-btn {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6ee7b7, #10b981);
+  color: #052e24;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(16, 185, 129, .2);
+}
+
+/* ===== Toast Message ===== */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  z-index: 100;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  visibility: hidden;
+  padding: 13px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(52, 211, 153, .3);
+  background: #172538;
+  color: #6ee7b7;
+  font-size: 13px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  transition: .25s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cta-card {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 580px) {
+  body {
+    padding: 28px 14px;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .card {
+    padding: 23px;
+  }
+
+  .cta-card {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-btn {
+    width: 100%;
+  }
+
+  .stat-value {
+    font-size: 31px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+  <!-- Page Header -->
+  <header class="header">
+    <span class="eyebrow">✦ MODERN UI COMPONENTS</span>
+    <h1>Premium <span>Cards</span></h1>
+    <p>
+      Beautiful responsive cards for dashboards, portfolios,
+      statistics and professional websites.
+    </p>
+  </header>
+
+  <main class="card-grid">
+
+    <!-- Statistics Card 1 -->
+    <article class="card">
+      <div class="stat-label">
+        <span>Total Revenue</span>
+        <div class="card-icon" style="margin:0">💰</div>
+      </div>
+      <div class="stat-value">$24,850<small>.00</small></div>
+      <span class="trend">↗ 12.8% this month</span>
+      <div class="progress-track">
+        <div class="progress-fill" style="--progress:75%"></div>
+      </div>
+    </article>
+
+    <!-- Statistics Card 2 -->
+    <article class="card">
+      <div class="stat-label">
+        <span>Total Users</span>
+        <div class="card-icon icon-blue" style="margin:0">👥</div>
+      </div>
+      <div class="stat-value">8,492</div>
+      <span class="trend">↗ 8.2% this month</span>
+      <div class="progress-track">
+        <div class="progress-fill"
+             style="--progress:62%; background:linear-gradient(90deg,#0ea5e9,#7dd3fc)">
+        </div>
+      </div>
+    </article>
+
+    <!-- Statistics Card 3 -->
+    <article class="card">
+      <div class="stat-label">
+        <span>Active Projects</span>
+        <div class="card-icon icon-purple" style="margin:0">🚀</div>
+      </div>
+      <div class="stat-value">126</div>
+      <span class="trend">↗ 5.4% this month</span>
+      <div class="progress-track">
+        <div class="progress-fill"
+             style="--progress:85%; background:linear-gradient(90deg,#a855f7,#d8b4fe)">
+        </div>
+      </div>
+    </article>
+
+    <!-- Profile Card -->
+    <article class="card profile-card">
+      <div class="avatar">JD</div>
+      <h2>John Developer</h2>
+      <div class="role">Senior UI Designer</div>
+      <p>
+        Creating modern digital experiences with thoughtful
+        design and clean interfaces.
+      </p>
+      <button class="profile-btn" type="button" data-message="Profile button clicked!">
+        View Profile ↗
+      </button>
+    </article>
+
+    <!-- Features Card -->
+    <article class="card">
+      <div class="card-icon icon-gold">⚡</div>
+      <h2>Premium Features</h2>
+      <p>Everything you need to build a polished user experience.</p>
+      <ul class="feature-list">
+        <li><span>✓</span> Responsive layout</li>
+        <li><span>✓</span> Smooth hover animations</li>
+        <li><span>✓</span> Modern color palette</li>
+        <li><span>✓</span> Clean component design</li>
+      </ul>
+    </article>
+
+    <!-- Call To Action Card -->
+    <article class="card cta-card">
+      <div>
+        <div class="card-icon">✨</div>
+        <h2>Ready to get started?</h2>
+        <p>
+          Take your next project to the next level with a
+          professional, modern design.
+        </p>
+        <button class="cta-btn" type="button" data-message="Getting started!">
+          Get Started&nbsp; →
+        </button>
+      </div>
+      <div class="card-icon icon-purple" style="font-size:42px;width:95px;height:95px;flex-shrink:0">
+        💎
+      </div>
+    </article>
+
+  </main>
+
+  <footer style="text-align:center;color:#64748b;font-size:12px;margin-top:35px">
+    Built with HTML, CSS & JavaScript · Responsive on all devices
+  </footer>
+
+</div>
+
+<!-- Message shown after clicking demo buttons -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+// Show a small notification when a demo button is clicked.
+const toast = document.getElementById("toast");
+let toastTimeout;
+
+document.querySelectorAll("[data-message]").forEach(function(button) {
+  button.addEventListener("click", function() {
+    toast.textContent = button.dataset.message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimeout);
+    toastTimeout = setTimeout(function() {
+      toast.classList.remove("show");
+    }, 2200);
+  });
+});
+</script>
+
+</body>
+</html>
